@@ -39,6 +39,11 @@ ALLOWED_HOSTS = [
     '8000-drobotaa-pp5api-picvsqtou8s.ws-eu115.gitpod.io'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-drobotaa-pp5api-picvsqtou8s.ws-eu115.gitpod.io',
+    # Add other trusted origins here
+]
+
 
 # Application definition
 
