@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Post(models.Model):
+    category_choice_filter = [
+        ('clothing', 'Clothing'), ('housekeeping', 'Housekeeping'),
+        ('food', 'Food'),('electronics', 'Electronics'),
+        ('services', 'Services'), ('tourism', 'Tourism')
+    ]
     image_filter_choices = [
     ('_1977', '1977'), ('brannan', 'Brannan'),
     ('earlybird', 'Earlybird'), ('hudson', 'Hudson'),
@@ -21,6 +26,9 @@ class Post(models.Model):
     )
     image_filter = models.CharField(
         max_length=35, choices=image_filter_choices, default='Normal'
+    )
+    category_filter = models.CharField(
+        max_length=40, choices=category_choice_filter, default='None'
     )
 
     class Meta:
