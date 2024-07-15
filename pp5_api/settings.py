@@ -36,11 +36,11 @@ SECRET_KEY = 'django-insecure-m^b%kwi#gn%uq#isg-hywr!)_1b3zr(ct7n+rob1%6f!ea^n7l
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-drobotaa-pp5api-picvsqtou8s.ws-eu115.gitpod.io'
+    '8000-drobotaa-pp5api-gze2zixq19w.ws-eu115.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-drobotaa-pp5api-picvsqtou8s.ws-eu115.gitpod.io',
+    'https://8000-drobotaa-pp5api-gze2zixq19w.ws-eu115.gitpod.io',
     # Add other trusted origins here
 ]
 
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
