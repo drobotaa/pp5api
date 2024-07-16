@@ -1,15 +1,17 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from .models import ValidPlus
+from .models import Follower
 
 
-class ValidPlusSerializer(serializers.ModelSerializer):
+class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
+    followed_name = serializers.ReadOnlyField(source="followed.username")
 
     class Meta:
-        model = ValidPlus
+        model = Follower
         fields = [
-            'id', 'owner', 'post', 'validated_at'
+            'id', 'owner', 'followed_name',
+            'followed', 'followed_at'
         ]
 
     def create(self, validated_data):
@@ -17,5 +19,5 @@ class ValidPlusSerializer(serializers.ModelSerializer):
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError({
-                'Message' : 'Duplicate!'
+                'Message': 'Can`t follow twice'
             })
