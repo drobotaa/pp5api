@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Post
+from validplus.models import ValidPlus
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -7,6 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    valid_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 4:
@@ -27,11 +29,22 @@ class PostSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_valid_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            valid = ValidPlus.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return valid.id if valid else None
+        return None
+
+
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'created_at',
             'updated_at', 'title', 'description',
             'image', 'profile_id', 'profile_image',
-            'image_filter', 'category_filter'
+            'image_filter', 'category_filter',
+            'valid_id'
         ]

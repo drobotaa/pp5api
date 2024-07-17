@@ -6,7 +6,7 @@ class Follower(models.Model):
     """
     Users will be able to follow store pages
     """
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
     followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followed')
     followed_at = models.DateTimeField(auto_now_add=True)
 
