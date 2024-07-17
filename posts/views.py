@@ -1,5 +1,6 @@
-from rest_framework import generics, permissions
-from drf_api.permissions import IsOwnerOrReadOnly
+from django.db.models import Count
+from rest_framework import generics, permissions, filters
+from pp5_api.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
 
@@ -10,10 +11,22 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count = Count('comment', distinct=True),
+        validated_count = Count('valid', distinct=True)
+    ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'comments_count', 'validated_count',
+    ]
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count = Count('comment', distinct=True),
+        validated_count = Count('valid', distinct=True)
+    ).order_by('-created_at')
