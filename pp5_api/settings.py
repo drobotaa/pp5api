@@ -64,7 +64,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost',
-    'https://pp5-drobota-bd94aa0a3e49.herokuapp.com'
+    'pp5-drobota-bd94aa0a3e49.herokuapp.com',
     '8000-drobotaa-pp5api-gze2zixq19w.ws-eu115.gitpod.io'
 ]
 
