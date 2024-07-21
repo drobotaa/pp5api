@@ -1,0 +1,48 @@
+.Button {
+  font-size: 1rem;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+  background-color: #e90d35;
+}
+
+.Button:hover {
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.Button:hover:active {
+  background-color: #e90d35 !important;
+}
+
+.Button:active {
+  background-color: #e90d35 !important;
+}
+
+.Button:focus {
+  background-color: #e90d35;
+}
+
+.WideButton {
+  width: 100%;
+}
+
+.ColorChange:hover {
+  background-color: #f8879b;
+  color: black;
+}
+
+.Unfollow {
+  color: white;
+  background-color: black;
+}
+
+.Unfollow:hover {
+  background-color: #f8879b;
+  color: black;
+}
