@@ -76,7 +76,7 @@ function OffersPage({ message, filter = "" }) {
                                 dataLength={posts.results.length}
                                 loader={<ResourceA spinner />}
                                 hasMore={!!posts.next}
-                                next={ ()=> fetchMoreData(posts, setPosts) }
+                                next={()=> fetchMoreData(posts, setPosts)}
                             />
                             
                         ) : (
