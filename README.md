@@ -1,131 +1,75 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Offers24 Website
 
-Welcome Andrei Drobota,
+**Welcome to Offers24 website, your go-to source for the latest offers from various shops/business or even indivuduals!
+![alt Offers24 HomePage](./staticfiles/build/static/images/frontpage.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Features
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+### Existing Features
 
-## Gitpod Reminders
+- Up-to-Date Offers: Get the latest offers from around the globe, keeping you informed.
+- Our website offers an intuitive and user-friendly experience, ensuring you can easily navigate through offers and find the offer that matters to you.
+- Join the conversation! Engage with fellow tech enthusiasts through comments and discussions, sharing your thoughts and opinions on the hottest and latest Offers. Aswell as editing or deleting your comments.![alt Comment Section](./staticfiles/build/static/images/comments.png)
+- As a Logged in User, I can Post a new Offer, being able to track its Valid counter, Comment Counter, aswell as editing or deleting it. ![alt Detailed Post 1](./staticfiles//build/static/images/detail1.png) ![alt Detailed Post 2](./staticfiles/build/static/images/detail2.png)
+- As a Logged in User, I can Follow/ Unfollow Marketers, in order to be able to see their Offers in my feed ![alt Follow Feature](./staticfiles/build/static/images/followfeature.png)
+- You can create your Marketer Profile, or just a Offer Catcher Profile, and Edit yout Profile aswell as Credentials. ![alt Profile DropDown Menu](./staticfiles//build/static/images/profileedit.png)
+- Interactive Search. You can search an Offer, after its Title, Username, or even category.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Features left to implement
 
-`python3 -m http.server`
+- A valid_until attribute, in order to make the posts auto-delete after a given date.
 
-A blue button should appear to click: _Make Public_,
+## Testing
 
-Another blue button should appear to click: _Open Browser_.
+### Validator Testing
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+- Errors returned from [W3C Validator](https://validator.w3.org/)
+- No error returned from [W3C CSS](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-drobota-bd94aa0a3e49.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
-A blue button should appear to click: _Make Public_,
+### Manual Testing
 
-Another blue button should appear to click: _Open Browser_.
+- All the Elements in the nav bar work aswell as the styling. ![alt Navbar](./staticfiles/build/static/images/navbar.png)
+- All the Button Elements are properly linked up with their respective onClick attributes, the styling works as intended ![alt Buttons](./staticfiles/build/static/images/buttoms.png)
+- All the Html is rendering properly
+- All the CRUD Functionality works as intended.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Automated Testing
 
-To log into the Heroku toolbelt CLI:
+- No errors retuned from the automated tests included in the BackEnd aswell as in FrontEnd.
+  - In BackEnd we tested, mainly the Post/Offer side, all the tests Passed
+  - In FrontEnd we tested, mainly the NavBar rendering For Logged In, respectively Logged out User, and aswell as Links
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Unfixed Bugs
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- The button for Follow/Unfollow does not take his style untill you click outside of it [!alt Button bug](./staticfiles/build/static/images/buttonbug.png)
 
-### Connecting your Mongo database
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+## Used Libraries
 
-------
+- React Bootstrap [React Bootstrap](https://react-bootstrap-v4.netlify.app/). We chose to use React Bootstrap for our project to leverage its pre-designed components and styles that are consistent with Bootstrap's established design system.
+- Axios. [Axios](https://axios-http.com/docs/intro) We chose to use Axios for handling HTTP requests in our project due to its simplicity and powerful features. Axios provides a clean and intuitive API for making requests, supports promises which make it easier to handle asynchronous operations, and automatically transforms JSON data.
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Reusable Components
 
-**June 18, 2024,** Add Mongo back into template
+- We chose to have Reusable Components, in order to have a clean approach in most of the elements.
+ - Navbar component. To display the links on every page
+ - DropDown component. To be able to help the users performing crud with minimal navigation
+ - ResourceA component. To be able to display a Spinner or a message, when another resources are loading, or a message needs to be displayed 
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+## Deployment
 
-**May 28 2024:** Fix Mongo and Links installs
+- This app was deployed to Heroku App. Steps:
+  - In the heroku panel, click New
+  - Deployment method via GitHub
+  - Connect your project repository via Heroku
+  - Go to Settings:
+    - Write your config vars
+  - For Manual Deploy, select main branch
 
-**April 26 2024:** Update node version to 16
+## Credits
 
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+- [Code Institute Moments Project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+1/courseware/70a8c55db0504bbdb5bcc3bfcf580080/953cd4e5015f483bb05263db3e740e19/)
+- [Cloudinary](https://console.cloudinary.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [Bootstrap React](https://react-bootstrap-v4.netlify.app/)
