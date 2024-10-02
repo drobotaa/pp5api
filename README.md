@@ -3,6 +3,14 @@
 Welcome to **Offers24**, your trusted platform for accessing and sharing the latest offers from various businesses, companies, or even individual users. This project enables users to not only browse offers but also post their own, facilitating a dynamic marketplace of deals and promotions from a wide range of sources.
 ![alt Offers24 HomePage](./staticfiles/build/static/images/frontpage.png)
 
+# Project Goals and Intentions
+
+The **Offers24** platform was developed with the intention of creating a centralized hub where users can easily discover, post, and interact with various offers from businesses or individual marketers. The key goals behind the creation of this application are:
+
+- **Offer Discovery**: To provide users with an easy-to-use platform for discovering offers from different categories, be it from companies, stores, or individuals, allowing them to stay up-to-date with the best deals available globally. 
+- **User Engagement**: To encourage community interaction by enabling users to comment on, share, and discuss various offers, thereby fostering a collaborative environment where users can make informed decisions.
+- **Marketplace Empowerment**: To give both businesses and individuals a platform where they can promote their offers and engage directly with potential customers, driving traffic and visibility for their deals.
+
 ## Features
 
 ### Existing Features
@@ -46,8 +54,11 @@ Welcome to **Offers24**, your trusted platform for accessing and sharing the lat
 
 ## Used Libraries
 
+- **Django**: Offers24 uses [Django](https://www.djangoproject.com/), a high-level Python web framework that encourages rapid development and clean, pragmatic design. Django was chosen for its ability to handle the backend needs of the project, such as user authentication, database management, and ensuring security while allowing the development of scalable applications.
 - **React Bootstrap**: This project utilizes [React Bootstrap](https://react-bootstrap-v4.netlify.app/). for its pre-designed components and consistent styling, streamlining the development process and ensuring adherence to Bootstrap's design principles.
 - **Axios**: The [Axios](https://axios-http.com/docs/intro) library was used to handle HTTP requests. Axios simplifies the process of making API requests and supports promises for managing asynchronous operations, while also automatically handling JSON data transformation.
+- **Infinite Scroll**: The [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component), was used to implement infinite scrolling, allowing users to scroll through offers without needing to click on "next" or "previous" pages. This improves the user experience by continuously loading content as the user reaches the end of the page.
+- **Gunicorn**: [Gunicorn](https://gunicorn.org/) is used as the Python WSGI HTTP server for running the Django application in production. It is a robust, lightweight server that is compatible with most web frameworks, and it was selected for its efficiency and scalability in handling multiple simultaneous requests.
 
 ## Reusable Components
 
