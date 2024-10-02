@@ -1,71 +1,77 @@
 # Offers24 Website
 
-**Welcome to Offers24 website, your go-to source for the latest offers from various shops/business or even indivuduals!
+Welcome to **Offers24**, your trusted platform for accessing and sharing the latest offers from various businesses, companies, or even individual users. This project enables users to not only browse offers but also post their own, facilitating a dynamic marketplace of deals and promotions from a wide range of sources.
 ![alt Offers24 HomePage](./staticfiles/build/static/images/frontpage.png)
 
 ## Features
 
 ### Existing Features
 
-- Up-to-Date Offers: Get the latest offers from around the globe, keeping you informed.
-- Our website offers an intuitive and user-friendly experience, ensuring you can easily navigate through offers and find the offer that matters to you.
-- Join the conversation! Engage with fellow tech enthusiasts through comments and discussions, sharing your thoughts and opinions on the hottest and latest Offers. Aswell as editing or deleting your comments.![alt Comment Section](./staticfiles/build/static/images/comments.png)
-- As a Logged in User, I can Post a new Offer, being able to track its Valid counter, Comment Counter, aswell as editing or deleting it. ![alt Detailed Post 1](./staticfiles//build/static/images/detail1.png) ![alt Detailed Post 2](./staticfiles/build/static/images/detail2.png)
-- As a Logged in User, I can Follow/ Unfollow Marketers, in order to be able to see their Offers in my feed ![alt Follow Feature](./staticfiles/build/static/images/followfeature.png)
-- You can create your Marketer Profile, or just a Offer Catcher Profile, and Edit yout Profile aswell as Credentials. ![alt Profile DropDown Menu](./staticfiles//build/static/images/profileedit.png)
-- Interactive Search. You can search an Offer, after its Title, Username, or even category.
+- **Real-Time Offers**: Stay informed with the latest offers worldwide through an up-to-date feed.
+- **User-Friendly Interface**: Offers24 prioritizes a seamless and intuitive browsing experience, allowing users to easily navigate and locate offers that are most relevant to them.
+- **Community Engagement**: Users can actively participate by commenting on offers, engaging in discussions, and sharing opinions on the latest deals. Additionally, users have the ability to edit or delete their own comments.![alt Comment Section](./staticfiles/build/static/images/comments.png)
+- **User Post Capabilities**: Logged-in users can create new offers and track important metrics such as the number of valid offers, comments, and engagement. Users can also modify or delete their offers if necessary. ![alt Detailed Post 1](./staticfiles//build/static/images/detail1.png) ![alt Detailed Post 2](./staticfiles/build/static/images/detail2.png)
+- **Follow/Unfollow Functionality**: Logged-in users can follow or unfollow marketers, ensuring that they receive updates on offers from specific marketers in their personalized feed. ![alt Follow Feature](./staticfiles/build/static/images/followfeature.png)
+- **Profile Customization**: Users can create and customize either a Marketer Profile or an Offer Catcher Profile. Additionally, users can edit both their profile information and credentials when necessary.![alt Profile DropDown Menu](./staticfiles//build/static/images/profileedit.png)
+- **Interactive Search**: Offers24 provides a powerful search feature, allowing users to search offers by title, username, or category, ensuring quick and efficient access to relevant content.
 
 ### Features left to implement
 
-- A valid_until attribute, in order to make the posts auto-delete after a given date.
+- **Expiration Attribute**: Introducing a valid_until attribute will enable automatic deletion of posts after a set expiration date, enhancing the timeliness of offers displayed on the platform.
 
 ## Testing
 
 ### Validator Testing
 
-- Errors returned from [W3C Validator](https://validator.w3.org/)
-- No error returned from [W3C CSS](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-drobota-bd94aa0a3e49.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- The site was validated using the [W3C Markup Validator](https://validator.w3.org/), which returned no errors.
+- CSS validation was performed using the [W3C CSS](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fpp5-drobota-bd94aa0a3e49.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en), confirming that the CSS code complies with web standards.
 
 ### Manual Testing
 
-- All the Elements in the nav bar work aswell as the styling. ![alt Navbar](./staticfiles/build/static/images/navbar.png)
-- All the Button Elements are properly linked up with their respective onClick attributes, the styling works as intended ![alt Buttons](./staticfiles/build/static/images/buttoms.png)
-- All the Html is rendering properly
-- All the CRUD Functionality works as intended.
+- **Navigation**: All elements in the navigation bar function correctly and display the intended styling. ![alt Navbar](./staticfiles/build/static/images/navbar.png)
+- **Button Functionality**: All buttons are properly linked to their corresponding onClick events, with styling applied as intended. ![alt Buttons](./staticfiles/build/static/images/buttoms.png)
+- **Rendering**: HTML elements render as expected across different pages and devices.
+- **CRUD Operations**: The Create, Read, Update, and Delete functionality operates smoothly throughout the platform.
 
 ### Automated Testing
 
-- No errors retuned from the automated tests included in the BackEnd aswell as in FrontEnd.
-  - In BackEnd we tested, mainly the Post/Offer side, all the tests Passed
-  - In FrontEnd we tested, mainly the NavBar rendering For Logged In, respectively Logged out User, and aswell as Links
+- Backend and frontend tests were conducted to ensure the reliability of core functionalities:
+  - **Backend Testing**: Focused primarily on the Post/Offer functionality, ensuring all tests passed successfully.
+  - **Frontend Testing**: Concentrated on the rendering of the navigation bar for both logged-in and logged-out users, along with link verification.
 
-### Unfixed Bugs
+### Known Issues
 
-- The button for Follow/Unfollow does not take his style untill you click outside of it [!alt Button bug](./staticfiles/build/static/images/buttonbug.png)
+- **Follow/Unfollow Button**: The Follow/Unfollow button does not update its style immediately after being clicked. The style change only takes effect once the user clicks outside the button. [!alt Button bug](./staticfiles/build/static/images/buttonbug.png)
 
 
 ## Used Libraries
 
-- React Bootstrap [React Bootstrap](https://react-bootstrap-v4.netlify.app/). We chose to use React Bootstrap for our project to leverage its pre-designed components and styles that are consistent with Bootstrap's established design system.
-- Axios. [Axios](https://axios-http.com/docs/intro) We chose to use Axios for handling HTTP requests in our project due to its simplicity and powerful features. Axios provides a clean and intuitive API for making requests, supports promises which make it easier to handle asynchronous operations, and automatically transforms JSON data.
-
+- **React Bootstrap**: This project utilizes [React Bootstrap](https://react-bootstrap-v4.netlify.app/). for its pre-designed components and consistent styling, streamlining the development process and ensuring adherence to Bootstrap's design principles.
+- **Axios**: The [Axios](https://axios-http.com/docs/intro) library was used to handle HTTP requests. Axios simplifies the process of making API requests and supports promises for managing asynchronous operations, while also automatically handling JSON data transformation.
 
 ## Reusable Components
 
-- We chose to have Reusable Components, in order to have a clean approach in most of the elements.
- - Navbar component. To display the links on every page
- - DropDown component. To be able to help the users performing crud with minimal navigation
- - ResourceA component. To be able to display a Spinner or a message, when another resources are loading, or a message needs to be displayed 
+- To promote code maintainability and cleanliness, several reusable components were developed:
+ - **Navbar Component**: This component is responsible for displaying links consistently across all pages.
+ - **DropDown Component**: Used to facilitate CRUD operations with minimal navigation.
+ - **ResourceA Component**: This component displays a spinner or a message when other resources are loading, ensuring a smooth user experience. 
 
 ## Deployment
 
-- This app was deployed to Heroku App. Steps:
-  - In the heroku panel, click New
-  - Deployment method via GitHub
-  - Connect your project repository via Heroku
-  - Go to Settings:
-    - Write your config vars
-  - For Manual Deploy, select main branch
+- **Frontend Deployment**:
+  The frontend of the Offers24 platform was developed using React and deployed via Heroku. The deployment process involved:
+    - Navigating to the Heroku dashboard and clicking on "New."
+    - Selecting the deployment method via GitHub and connecting the repository.
+    - Ensuring that the frontend project is built using the appropriate environment variables and settings, such as API endpoints and authentication configurations.
+    - Deploying the frontend manually from the main branch or enabling automatic deployment for continuous integration.
+
+- **Backend Deployment**:
+  The backend of the Offers24 platform, developed with Django, was also deployed on Heroku using the following steps:
+    - Setting up the Heroku environment for Django, including the necessary Procfile and requirements.txt to ensure the correct runtime environment.
+    - Connecting the backend repository to Heroku.
+    - Configuring environment variables for database connections, API keys, and other sensitive credentials through Heroku’s settings.
+    - Using CodeInstitute Database creator as the database service in the Heroku environment.
+    - Deploying the backend from the main branch, ensuring that migrations were applied, and the application was ready for production use.
 
 ## Credits
 

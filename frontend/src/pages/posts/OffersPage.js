@@ -60,7 +60,7 @@ function OffersPage({ message, filter = "" }) {
                         onChange={(event) => setQuery(event.target.value)}
                         type="text"
                         className="mr-sm-2"
-                        placeholder="Search"
+                        placeholder="Search offers by name, description or even a category you think of!"
                     />
                 </Form>
 
