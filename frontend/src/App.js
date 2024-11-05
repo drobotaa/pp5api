@@ -14,6 +14,8 @@ import ProfilePage from './pages/profiles/ProfilePage';
 import UsernameEditForm from './pages/profiles/UsernameEditForm';
 import UserPasswordEditForm from './pages/profiles/UserPasswordEditForm';
 import ProfileEditForm from './pages/profiles/ProfileEditForm';
+import EventCreateForm from './pages/events/EventCreateForm'
+import EventPage from './pages/events/EventPage'
 import NotFound from './components/NotFound';
 
 
@@ -43,6 +45,8 @@ function App() {
           <Route exact path='/profiles/:id/edit/username' render={() => <UsernameEditForm />} />
           <Route exact path='/profiles/:id/edit/password' render={() => <UserPasswordEditForm />} />
           <Route exact path='/profiles/:id/edit' render={() => <ProfileEditForm />} />
+          <Route exact path='/event/create' render={() => <EventCreateForm />} />
+          <Route exact path='/event/:id' render={() => <EventPage/>}/>
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>

@@ -31,7 +31,8 @@ urlpatterns = [
     path('api/', include('posts.urls')),
     path('api/', include('comments.urls')),
     path('api/', include('validplus.urls')),
-    path('api/', include('follower.urls'))
+    path('api/', include('follower.urls')),
+    path('api/', include('events.urls'))
 
 ]
 

@@ -66,6 +66,7 @@ DEBUG = 'DEBUG' in os.environ
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
+    '8000-drobotaa-pp5api-yp5ossouc72.ws-eu116.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -101,6 +102,7 @@ INSTALLED_APPS = [
     'comments',
     'validplus',
     'follower',
+    'events',
 ]
 SITE_ID = 1
 MIDDLEWARE = [

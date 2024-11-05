@@ -30,11 +30,18 @@ const NavBar = () => {
     }
 
     const addPostIcon = (
+        <>
         <NavLink
             activeClassName={styles.Active}
             className={styles.NavLink} to="/posts/create">
             Add new Offer<i className='fa-solid fa-cart-plus'></i>
         </NavLink>
+        <NavLink
+        activeClassName={styles.Active}
+        className={styles.NavLink} to="/event/create">
+        Add new Event<i className="fa-regular fa-calendar-plus"></i>
+    </NavLink>
+    </>
     )
 
     const loggedInIcons = (
