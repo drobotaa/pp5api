@@ -1,32 +1,33 @@
-import React from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from "react-bootstrap/Navbar"
-import Container from 'react-bootstrap/Container'
-import styles from '../styles/NavBar.module.css'
-import logo from '../assets/logo_resized.png'
-import { NavLink } from 'react-router-dom'
-import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
-import UserAvatar from "../components/UserAvatar"
-import axios from 'axios'
-import useClickOutside from '../hooks/useClickOutside'
-import { removeTokenTimeStamp } from '../utilities.js/utilities'
+import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from "react-bootstrap/Navbar";
+import Container from 'react-bootstrap/Container';
+import styles from '../styles/NavBar.module.css';
+import logo from '../assets/logo_resized.png';
+import { NavLink } from 'react-router-dom';
+import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
+import UserAvatar from "../components/UserAvatar";
+import axios from 'axios';
+import useClickOutside from '../hooks/useClickOutside';
+import { removeTokenTimeStamp } from '../utilities.js/utilities';
+import { useNotification } from '../hooks/useNotification'; // Import the useNotification hook
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
-
     const { expanded, setExpanded, ref } = useClickOutside();
+    const { showNotification, Notification } = useNotification(); // Initialize the notification hook
 
     const handleSignOut = async () => {
         try {
-            await axios.post('/dj-rest-auth/logout/')
+            await axios.post('/dj-rest-auth/logout/');
             setCurrentUser(null);
             removeTokenTimeStamp();
+            showNotification("Successfully signed out!"); // Show success message on sign-out
         } catch (err) {
-            // console.log(err)
+            // Optionally show an error message if needed
         }
     }
-
 
     const addPostIcon = (
         <NavLink
@@ -35,6 +36,7 @@ const NavBar = () => {
             Add new Offer<i className='fa-solid fa-cart-plus'></i>
         </NavLink>
     )
+
     const loggedInIcons = (
         <>
             <NavLink
@@ -55,9 +57,9 @@ const NavBar = () => {
                 className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`}>
                 <UserAvatar src={currentUser?.profile_image} text="Profile" height={38} />
             </NavLink>
-
         </>
     )
+
     const loggedOutIcons = (
         <>
             <NavLink
@@ -67,42 +69,43 @@ const NavBar = () => {
             </NavLink>
             <NavLink
                 activeClassName={styles.Active}
-                className={styles.NavLink}
-                to='/signup'
-            >
+                className={styles.NavLink} to='/signup'>
                 Sign Up <i className='fa-solid fa-user-plus'></i>
             </NavLink>
         </>
     )
 
-
     return (
-        <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top'>
-            <Container>
-                <NavLink to="/">
-                    <Navbar.Brand>
-                        <img src={logo} alt='logo' />
-                    </Navbar.Brand>
-                </NavLink>
-                {currentUser && addPostIcon}
-                <Navbar.Toggle
-                    onClick={() => setExpanded(!expanded)}
-                    aria-controls="basic-navbar-nav"
-                    ref={ref}
-                />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <NavLink
-                            exact
-                            activeClassName={styles.Active}
-                            className={styles.NavLink} to="/">
-                            Home <i className='fa-solid fa-house'></i></NavLink>
-                        {currentUser ? loggedInIcons : loggedOutIcons}
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <>
+            <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top'>
+                <Container>
+                    <NavLink to="/">
+                        <Navbar.Brand>
+                            <img src={logo} alt='logo' />
+                        </Navbar.Brand>
+                    </NavLink>
+                    {currentUser && addPostIcon}
+                    <Navbar.Toggle
+                        onClick={() => setExpanded(!expanded)}
+                        aria-controls="basic-navbar-nav"
+                        ref={ref}
+                    />
+                    <Notification />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <NavLink
+                                exact
+                                activeClassName={styles.Active}
+                                className={styles.NavLink} to="/">
+                                Home <i className='fa-solid fa-house'></i>
+                            </NavLink>
+                            {currentUser ? loggedInIcons : loggedOutIcons}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </>
     )
 }
 
-export default NavBar
+export default NavBar;
