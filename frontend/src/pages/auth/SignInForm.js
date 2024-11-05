@@ -44,7 +44,11 @@ function SignInForm() {
             const {data} =  await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             setTokenTimeStamp(data);
-            history.goBack();
+            setShowSuccessMSg(true);
+            setTimeout(() => {
+                setShowSuccessMSg(false); // Hide after 3 sec
+                history.goBack(); 
+            }, 3000);
         } catch (err) {
             setErrors(err.response?.data)
         }
@@ -52,12 +56,21 @@ function SignInForm() {
 
     const history = useHistory();
     const [errors, setErrors] = useState({})
+    const [showSuccessMsg, setShowSuccessMSg] = useState(false); // state for sign in feedback message
 
     return (
         <Row className={styles.Row}>
             <Col className="my-auto p-0 p-md-2" md={6}>
                 <Container className={`${appStyles.Content} p-4 `}>
                     <h1 className={styles.Header}>Sign in</h1>
+
+                    {showSuccessMsg && ( // Conditional rendering 
+                        <Alert variant="success" className="mt-3 text-center">
+                            Successfully logged in!
+                        </Alert>
+
+                    )}
+
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
                             <Form.Label className="d-none">Username</Form.Label>
