@@ -17,6 +17,7 @@ import ResourceA from "../../components/ResourceA";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useNotification } from "../../hooks/useNotification";
 
 function PostCreateForm() {
 
@@ -31,6 +32,7 @@ function PostCreateForm() {
     image: '',
   })
   const { title, description, image, category_filter } = postData;
+  const { showNotification, Notification } = useNotification();
 
   const imageFile = useRef(null);
   const history = useHistory();
@@ -61,7 +63,8 @@ function PostCreateForm() {
     formData.append('image', imageFile.current.files[0])
     formData.append('category_filter', category_filter)
     try {
-      const { data } = await axiosReq.post('/posts/', formData)
+      const { data } = await axiosReq.post('/posts/', formData);
+      showNotification("Offer Created Successfully!")
       history.push(`/posts/${data.id}`)
     } catch (err) {
       // console.log(err)
@@ -142,57 +145,61 @@ function PostCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={12}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={`${appStyles.Image} ${styles.Image}`} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.ColorChange} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the Image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <ResourceA src={Upload} message="Click or tap to add an image" />
-                </Form.Label>
-              )}
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col className="py-2 p-0 p-md-2" md={12}>
+            <Container
+              className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+            >
+              <Form.Group className="text-center">
+                {image ? (
+                  <>
+                    <figure>
+                      <Image className={`${appStyles.Image} ${styles.Image}`} src={image} rounded />
+                    </figure>
+                    <div>
+                      <Form.Label
+                        className={`${btnStyles.Button} ${btnStyles.ColorChange} btn`}
+                        htmlFor="image-upload"
+                      >
+                        Change the Image
+                      </Form.Label>
+                    </div>
+                  </>
+                ) : (
+                  <Form.Label
+                    className="d-flex justify-content-center"
+                    htmlFor="image-upload"
+                  >
+                    <ResourceA src={Upload} message="Click or tap to add an image" />
+                  </Form.Label>
+                )}
 
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeUpload}
-                ref={imageFile}
-                style={{ display: 'none' }}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+                <Form.File
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleChangeUpload}
+                  ref={imageFile}
+                  style={{ display: 'none' }}
+                />
+              </Form.Group>
+              {errors?.image?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
+              <div className="d-md-none">{textFields}</div>
+            </Container>
+          </Col>
+          <Col className="d-none d-md-block p-0 p-md-2">
+            <Container className={appStyles.Content}>{textFields}</Container>
+          </Col>
+        </Row>
+      </Form>
+      
+      <Notification />
+    </>
   );
 }
 
