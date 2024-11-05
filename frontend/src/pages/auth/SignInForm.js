@@ -18,6 +18,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useNotification } from "../../hooks/useNotification";
 import { setTokenTimeStamp } from "../../utilities.js/utilities";
 
 function SignInForm() {
@@ -30,6 +31,7 @@ function SignInForm() {
     })
 
     const { username, password } = signInData;
+    const { showNotification, Notification} = useNotification();
 
     const handleChange = (event) => {
         setSignInData({
@@ -44,9 +46,8 @@ function SignInForm() {
             const {data} =  await axios.post('/dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             setTokenTimeStamp(data);
-            setShowSuccessMSg(true);
+            showNotification("Successfully logged in!")
             setTimeout(() => {
-                setShowSuccessMSg(false); // Hide after 3 sec
                 history.goBack(); 
             }, 3000);
         } catch (err) {
@@ -56,7 +57,6 @@ function SignInForm() {
 
     const history = useHistory();
     const [errors, setErrors] = useState({})
-    const [showSuccessMsg, setShowSuccessMSg] = useState(false); // state for sign in feedback message
 
     return (
         <Row className={styles.Row}>
@@ -64,12 +64,7 @@ function SignInForm() {
                 <Container className={`${appStyles.Content} p-4 `}>
                     <h1 className={styles.Header}>Sign in</h1>
 
-                    {showSuccessMsg && ( // Conditional rendering 
-                        <Alert variant="success" className="mt-3 text-center">
-                            Successfully logged in!
-                        </Alert>
-
-                    )}
+                    <Notification />
 
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
