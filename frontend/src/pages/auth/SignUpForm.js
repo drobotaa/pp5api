@@ -5,6 +5,7 @@ import styles from '../../styles/SingInUpForm.module.css';
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import SignUp from '../../assets/SignUpp.jpg'
+import { useNotification } from "../../hooks/useNotification";
 
 import Alert from "react-bootstrap/Alert";
 import Form from 'react-bootstrap/Form'
@@ -25,6 +26,7 @@ const SignUpForm = () => {
   })
 
   const { username, password1, password2 } = signUpData;
+  const { showNotification, Notification } = useNotification();
 
   const [errors, setErrors] = useState({});
 
@@ -42,9 +44,13 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post('/dj-rest-auth/registration/', signUpData);
-      history.push('/signin');
+      showNotification("Successfully Signed Up! Redirecting to Sign in 3 seconds...")
+      setTimeout(() => {
+        history.push('/signin');
+      }, 3000);
     } catch (err) {
       setErrors(err.response?.data)
+      // showNotification("Registration failed. Please check the form again.") Optional
     }
   }
 
@@ -53,6 +59,8 @@ const SignUpForm = () => {
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>Sign Up</h1>
+
+          <Notification />
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">

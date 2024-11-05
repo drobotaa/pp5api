@@ -44,10 +44,11 @@ function SignInForm() {
         event.preventDefault();
         try {
             const {data} =  await axios.post('/dj-rest-auth/login/', signInData);
-            setCurrentUser(data.user);
-            setTokenTimeStamp(data);
+            
             showNotification("Successfully logged in!")
             setTimeout(() => {
+            setCurrentUser(data.user);
+            setTokenTimeStamp(data);
                 history.goBack(); 
             }, 3000);
         } catch (err) {
