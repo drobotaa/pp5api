@@ -10,22 +10,22 @@ import UserAvatar from "../components/UserAvatar";
 import axios from 'axios';
 import useClickOutside from '../hooks/useClickOutside';
 import { removeTokenTimeStamp } from '../utilities.js/utilities';
-import { useNotification } from '../hooks/useNotification'; // Import the useNotification hook
+import { useNotification } from '../hooks/useNotification';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutside();
-    const { showNotification, Notification } = useNotification(); // Initialize the notification hook
+    const { showNotification, Notification } = useNotification(); 
 
     const handleSignOut = async () => {
         try {
             await axios.post('/dj-rest-auth/logout/');
             setCurrentUser(null);
             removeTokenTimeStamp();
-            showNotification("Successfully signed out!"); // Show success message on sign-out
+            showNotification("Successfully signed out!"); 
         } catch (err) {
-            // Optionally show an error message if needed
+            
         }
     }
 

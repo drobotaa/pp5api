@@ -52,17 +52,19 @@ const Event = (props) => {
                         {owner}
                     </Link>
                     <div className='d-flex align-items-center'>
-                        <span>{updated_at}</span> {/* No date formatting */}
+                        <span>{updated_at}</span> 
                         {is_owner && eventPage && <DropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title className='text-center'>{title}</Card.Title>}
-                {location && <Card.Text className='text-center'>{location}</Card.Text>}
+                {title && <Card.Title className=''>{title}</Card.Title>}
+                {location && <Card.Text className='text-center'>Location: {location}</Card.Text>}
                 {description && <Card.Text className='text-center'>{description}</Card.Text>}
-                {date && <Card.Text className='text-center'>{date}</Card.Text>} {/* No date formatting */}
             </Card.Body>
+            <Card.Footer>
+            {date && <Card.Text className='text-center'>{date}</Card.Text>} 
+            </Card.Footer>
         </Card>
     );
 };

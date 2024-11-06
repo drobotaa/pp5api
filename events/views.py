@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from pp5_api.permissions import IsOwnerOrReadOnly 
 from .models import Event
 from .serializers import EventSerializer
@@ -10,6 +10,15 @@ class EventList(generics.ListCreateAPIView):
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Event.objects.all()
+    filter_backends = [
+        filters.SearchFilter
+    ]
+    search_fields = [
+        'title',
+        'description',
+        'location',
+        'date',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
