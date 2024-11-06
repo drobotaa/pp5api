@@ -10,7 +10,7 @@ const PopularMarketers = ({ mobile }) => {
     const { popularProfiles } = useProfileData();
 
     return (
-        <Container className={`${appStyles.Content} ${mobile && 'd-lg-none text-center mb-3'}`}>
+        <Container className={`${appStyles.Content} ${mobile && 'd-lg-none text-center mt-5 mb-3'}`}>
             {popularProfiles.results.length ?
                 (
                     <>
