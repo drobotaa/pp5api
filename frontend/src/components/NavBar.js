@@ -57,6 +57,11 @@ const NavBar = () => {
                 Valid Offers<i className='fa-solid fa-check'></i>
             </NavLink>
             <NavLink
+                activeClassName={styles.Active}
+                className={styles.NavLink} to="/event">
+                Events Feed<i class="fa-solid fa-star"></i>
+            </NavLink>
+            <NavLink
                 className={styles.NavLink} to="/" onClick={handleSignOut}>
                 Sign out<i className='fa-solid fa-right-from-bracket'></i>
             </NavLink>
@@ -88,7 +93,7 @@ const NavBar = () => {
                 <Container>
                     <NavLink to="/">
                         <Navbar.Brand>
-                            <img src={logo} alt='logo' />
+                            <img src={logo} alt='logo' className={styles.MediaFix}/>
                         </Navbar.Brand>
                     </NavLink>
                     {currentUser && addPostIcon}

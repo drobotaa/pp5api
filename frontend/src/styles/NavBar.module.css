@@ -1,13 +1,21 @@
 .NavBar {
     background-color: #ECE6E8;
     border: 1px solid black;
+    position: absolute;
 }
 
 .NavLink {
     padding: 5px;
+    font-size: small;
 }
 
 
 .Active i {
     color: #E90D35
+}
+
+@media (max-width: 440px) {
+    .MediaFix {
+        display: none;
+    }
 }
